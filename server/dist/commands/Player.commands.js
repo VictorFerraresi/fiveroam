@@ -28,8 +28,12 @@ export const healthCommand = (player, amount) => {
         realAmount = player.maxHealth;
     player.health = realAmount;
 };
+export const posCommand = (player) => {
+    logToPlayerConsole(player, `[Position] ${player.pos.x}, ${player.pos.y}, ${player.pos.z}`);
+};
 addCommand(new Command("ajuda", "/ajuda", helpCommand));
 addCommand(new Command("skin", "/skin [modelo]", skinCommand));
 addCommand(new Command("ircoord", "/ircoord [x] [y] [z]", gotoCoordCommand));
 addCommand(new Command("reviver", "/reviver", reviveCommand));
 addCommand(new Command("vida", "/vida [quantidade]", healthCommand));
+addCommand(new Command("pos", "/pos", posCommand));
