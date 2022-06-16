@@ -1,6 +1,6 @@
 import * as alt from "alt-server";
-import { onChatInput } from "./events/onChatInput";
-import { onPlayerConnect } from "./events/onPlayerConnect";
+import { onChatInput } from "./events/chat/onChatInput";
+import { onPlayerConnect } from "./events/player/onPlayerConnect";
 
 alt.log(`Server script has started.`);
 
