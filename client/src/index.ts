@@ -1,6 +1,8 @@
 import * as alt from "alt-client";
-import { onPlayerTest } from "./events/player/onPlayerTest";
+import { onPlayerShowHud } from "./events/player/onPlayerShowHud";
+import { onPlayerSpawn } from "./events/player/onPlayerSpawn";
 
 alt.log("Client script has started.");
 
-alt.onServer("player:Test", onPlayerTest);
+alt.onServer("player:ShowHud", onPlayerShowHud);
+alt.onServer("player:Spawn", onPlayerSpawn);
