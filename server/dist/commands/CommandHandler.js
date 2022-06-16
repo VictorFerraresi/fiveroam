@@ -28,5 +28,13 @@ export const executeCommand = (player, command, args) => {
         sendChatMessage(player, `USO: ${foundCommand.helpText}`, "grey");
         return;
     }
+    args = args.map((a) => {
+        if (!isNaN(a))
+            return Number(a);
+        return a;
+    });
     foundCommand.callback(player, ...args);
+};
+export const getAllCommands = () => {
+    return commands;
 };

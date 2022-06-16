@@ -53,5 +53,14 @@ export const executeCommand = (
     return;
   }
 
+  args = args.map((a) => {
+    if (!isNaN(a)) return Number(a);
+    return a;
+  });
+
   foundCommand.callback(player, ...args);
+};
+
+export const getAllCommands = () => {
+  return commands;
 };
