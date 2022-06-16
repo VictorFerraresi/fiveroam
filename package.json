@@ -6,6 +6,6 @@
   "author": "Victor Ferraresi",
   "license": "MIT",
   "scripts": {
-    "build": "cd server && npm run build && cd ../client && npm run build"
+    "build": "cd server && npm run build && cd ../client && npm run build && cd .. && cp -r server/dist/* 'C:\\AltV Server\\resources\\fiveroam\\server' && cp -r client/dist/* 'C:\\AltV Server\\resources\\fiveroam\\client'"
   }
 }
