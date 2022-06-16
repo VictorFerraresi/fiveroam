@@ -1,0 +1,17 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Victor Ferraresi",
+  "license": "MIT",
+  "devDependencies": {
+    "@altv/types-client": "^2.1.9",
+    "@altv/types-natives": "^1.4.4",
+    "@altv/types-shared": "^1.2.6",
+    "@altv/types-webview": "^1.0.2"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  }
+}

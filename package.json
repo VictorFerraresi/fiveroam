@@ -1,0 +1,11 @@
+{
+  "name": "fiveroam",
+  "version": "1.0.0",
+  "description": "Alt V Freeroam Gamemode",
+  "main": "entrypoint.js",
+  "author": "Victor Ferraresi",
+  "license": "MIT",
+  "scripts": {
+    "build": "cd server && npm run build && cd ../client && npm run build"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Victor Ferraresi",
+  "license": "MIT",
+  "devDependencies": {
+    "@altv/types-server": "^2.3.7",
+    "@altv/types-shared": "^1.2.6"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  }
+}
