@@ -15,5 +15,13 @@ export const plateCommand = (player, plate) => {
     player.vehicle.numberPlateText = plate;
     sendChatMessage(player, `Você alterou a placa do veículo para '${plate}'.`, "green");
 };
+export const repairVehicleCommand = (player) => {
+    if (!player.vehicle) {
+        sendChatMessage(player, "Você não está dentro de um veículo.", "red");
+        return;
+    }
+    player.vehicle.repair();
+};
 addCommand(new Command("veh", "/veh [modelo] [cor1] [cor2]", vehCommand));
 addCommand(new Command("placa", "/placa [texto]", plateCommand, true));
+addCommand(new Command("reparar", "/reparar", repairVehicleCommand));

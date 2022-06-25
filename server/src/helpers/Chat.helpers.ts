@@ -1,5 +1,5 @@
 import * as alt from "alt-server";
-import { Player } from "alt-server";
+import { Player } from "../entities/Player";
 
 export const sendChatMessageToAllPlayers = (
   text: string,
@@ -19,13 +19,5 @@ export const sendChatMessage = (
   icon: boolean | string = false,
   roleplay = false
 ) => {
-  alt.emitClient(
-    player,
-    "chat:showMessage",
-    text,
-    color,
-    gradient,
-    icon,
-    roleplay
-  );
+  player.emit("chat:showMessage", text, color, gradient, icon, roleplay);
 };

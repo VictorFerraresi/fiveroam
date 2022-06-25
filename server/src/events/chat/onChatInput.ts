@@ -1,6 +1,6 @@
 import { sendChatMessageToAllPlayers } from "../../helpers/Chat.helpers";
-import { Player } from "alt-server";
 import { executeCommand } from "../../commands/CommandHandler";
+import { Player } from "../../entities/Player";
 
 export const onChatInput = (
   player: Player,

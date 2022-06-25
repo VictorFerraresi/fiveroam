@@ -12,8 +12,8 @@ let isSelectingTeam = false;
 let hintInterval: number | undefined;
 
 export const onCharSelection = async () => {
-  await requestModel(alt.hash("s_m_y_cop_01"));
-  await requestModel(alt.hash("g_m_y_ballasout_01"));
+  await requestModel(alt.hash("s_m_y_cop_01"), 10000);
+  await requestModel(alt.hash("g_m_y_ballasout_01"), 10000);
 
   copPed = native.createPed(
     4,

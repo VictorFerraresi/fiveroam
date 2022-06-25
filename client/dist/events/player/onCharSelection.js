@@ -10,8 +10,8 @@ let selectedTeam = 0;
 let isSelectingTeam = false;
 let hintInterval;
 export const onCharSelection = async () => {
-    await requestModel(alt.hash("s_m_y_cop_01"));
-    await requestModel(alt.hash("g_m_y_ballasout_01"));
+    await requestModel(alt.hash("s_m_y_cop_01"), 10000);
+    await requestModel(alt.hash("g_m_y_ballasout_01"), 10000);
     copPed = native.createPed(4, alt.hash("s_m_y_cop_01"), -475.21319580078125, -1037.841796875, 52.4652099609375, 140, false, false);
     robberPed = native.createPed(4, alt.hash("g_m_y_ballasout_01"), -473.037353515625, -1039.3450927734375, 52.4652099609375, 130, false, false);
     alt.toggleGameControls(false);

@@ -1,4 +1,5 @@
-import { log, Player } from "alt-server";
+import { log } from "alt-server";
+import { Player } from "../entities/Player";
 import { sendChatMessage } from "../helpers/Chat.helpers";
 import { Command } from "./Command";
 

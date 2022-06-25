@@ -1,5 +1,5 @@
 import * as alt from "alt-server";
-import { Player } from "alt-server";
+import { Player } from "../entities/Player";
 import { sendChatMessage } from "../helpers/Chat.helpers";
 import { logToPlayerConsole } from "../helpers/Player.helpers";
 import { Command } from "./Command";

@@ -1,5 +1,5 @@
 import * as alt from "alt-server";
-import { Player } from "alt-server";
+import { Player } from "../entities/Player";
 import { sendChatMessage } from "../helpers/Chat.helpers";
 import { Command } from "./Command";
 import { addCommand } from "./CommandHandler";
@@ -38,6 +38,16 @@ export const plateCommand = (player: Player, plate: string) => {
   );
 };
 
+export const repairVehicleCommand = (player: Player) => {
+  if (!player.vehicle) {
+    sendChatMessage(player, "Você não está dentro de um veículo.", "red");
+    return;
+  }
+
+  player.vehicle.repair();
+};
+
 // Registros
 addCommand(new Command("veh", "/veh [modelo] [cor1] [cor2]", vehCommand));
 addCommand(new Command("placa", "/placa [texto]", plateCommand, true));
+addCommand(new Command("reparar", "/reparar", repairVehicleCommand));

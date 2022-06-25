@@ -1,6 +1,6 @@
 import * as alt from "alt-server";
-import { Player } from "alt-server";
 import { Vector3 } from "alt-shared";
+import { Player } from "../../entities/Player";
 
 const copSpawn = new Vector3(
   451.75384521484375,
@@ -33,8 +33,8 @@ export const onSelectedCharacter = (player: Player, team: number) => {
   }
 
   alt.setTimeout(() => {
-    alt.emitClient(player, "player:ShowHud", true);
-    alt.emitClient(player, "player:Spawn");
-    alt.emitClient(player, "player:FinishCharSelection");
+    player.emit("player:ShowHud", true);
+    player.emit("player:Spawn");
+    player.emit("player:FinishCharSelection");
   }, 500);
 };

@@ -21,8 +21,8 @@ export const onSelectedCharacter = (player, team) => {
         player.giveWeapon(alt.hash("weapon_assaultrifle"), 200, false);
     }
     alt.setTimeout(() => {
-        alt.emitClient(player, "player:ShowHud", true);
-        alt.emitClient(player, "player:Spawn");
-        alt.emitClient(player, "player:FinishCharSelection");
+        player.emit("player:ShowHud", true);
+        player.emit("player:Spawn");
+        player.emit("player:FinishCharSelection");
     }, 500);
 };
