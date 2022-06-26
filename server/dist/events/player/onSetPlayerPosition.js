@@ -1,3 +1,3 @@
 export const onSetPlayerPosition = (player, pos) => {
-    player.pos = pos;
+    player.teleport(pos);
 };

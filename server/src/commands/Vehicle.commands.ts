@@ -1,5 +1,6 @@
-import * as alt from "alt-server";
+import { Vector3 } from "alt-server";
 import { Player } from "../entities/Player";
+import { Vehicle } from "../entities/Vehicle";
 import { sendChatMessage } from "../helpers/Chat.helpers";
 import { Command } from "./Command";
 import { addCommand } from "./CommandHandler";
@@ -11,14 +12,10 @@ export const vehCommand = (
   color1: number,
   color2: number
 ) => {
-  const veh = new alt.Vehicle(
+  const veh = new Vehicle(
     model,
-    player.pos.x + 4,
-    player.pos.y,
-    player.pos.z,
-    0,
-    0,
-    0
+    new Vector3(player.pos.x + 4, player.pos.y, player.pos.z),
+    Vector3.zero
   );
   veh.primaryColor = color1;
   veh.secondaryColor = color2;

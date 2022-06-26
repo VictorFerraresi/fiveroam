@@ -1,7 +1,6 @@
 import * as alt from "alt-server";
 import { Player } from "../entities/Player";
 import { sendChatMessage } from "../helpers/Chat.helpers";
-import { logToPlayerConsole } from "../helpers/Player.helpers";
 import { Command } from "./Command";
 import { addCommand, getAllCommands } from "./CommandHandler";
 
@@ -26,7 +25,7 @@ export const gotoCoordCommand = (
   y: number,
   z: number
 ) => {
-  player.pos = new alt.Vector3(x, y, z);
+  player.teleport(new alt.Vector3(x, y, z));
 };
 
 export const reviveCommand = (player: Player) => {
@@ -36,15 +35,14 @@ export const reviveCommand = (player: Player) => {
 
 export const healthCommand = (player: Player, amount: number) => {
   let realAmount = amount == 0 ? 0 : amount + 100;
-  logToPlayerConsole(player, "Real amount is " + realAmount);
-  logToPlayerConsole(player, "Max health is " + player.maxHealth);
+  player.logToConsole("Real amount is " + realAmount);
+  player.logToConsole("Max health is " + player.maxHealth);
   if (realAmount > player.maxHealth) realAmount = player.maxHealth;
   player.health = realAmount;
 };
 
 export const posCommand = (player: Player) => {
-  logToPlayerConsole(
-    player,
+  player.logToConsole(
     `[Position] ${player.pos.x}, ${player.pos.y}, ${player.pos.z}`
   );
 };

@@ -15,6 +15,8 @@ const robberSpawn = new Vector3(
 );
 
 export const onSelectedCharacter = (player: Player, team: number) => {
+  player.team = team;
+
   if (0 == team) {
     player.spawn(copSpawn);
     player.model = "s_m_y_cop_01";
