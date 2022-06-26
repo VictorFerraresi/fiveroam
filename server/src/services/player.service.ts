@@ -1,26 +1,24 @@
-import { Player } from "../entities/player.entity";
+import { db } from "../database";
+import { PlayerModel } from "../repositories/player.repository";
+import bcrypt from "bcryptjs";
 
 export const getPlayerByUserAndPassword = async (
   user: string,
   password: string
-): Promise<Player | null> => {
-  // const player = await db.player.findFirst({
-  //   where: {
-  //     user,
-  //     password,
-  //   },
-  // });
+): Promise<PlayerModel> => {
+  const res = await db.query("SELECT * FROM player WHERE username = $1", [
+    user,
+  ]);
 
-  // if (!!player) {
-  //   const res = new Player();
-
-  //   res.uid = player.id;
-  //   res.user = player.user;
-  //   res.encryptedPassword = player.password;
-  //   res.admin = player.admin;
-
-  //   return res;
-  // }
+  if (!!res && res.rowCount > 0) {
+    const correctPassword = await bcrypt.compare(
+      "" + password,
+      res.rows[0].password
+    );
+    if (correctPassword) {
+      return res.rows[0];
+    }
+  }
 
   return null;
 };

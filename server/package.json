@@ -7,11 +7,16 @@
   "devDependencies": {
     "@altv/types-server": "^2.3.7",
     "@altv/types-shared": "^1.2.6",
-    "@types/node": "^18.0.0"
+    "@types/bcryptjs": "^2.4.2",
+    "@types/node": "^18.0.0",
+    "@types/pg": "^8.6.5"
   },
   "type": "module",
   "scripts": {
     "build": "tsc"
   },
-  "dependencies": {}
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "pg": "^8.7.3"
+  }
 }

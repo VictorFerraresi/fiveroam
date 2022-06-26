@@ -1,6 +1,7 @@
 import { Vector3 } from "alt-server";
 import { Player } from "../entities/player.entity";
 import { Vehicle } from "../entities/vehicle.entity";
+import { sendChatMessage } from "../services/chat.service";
 import { Command } from "./command";
 import { addCommand } from "./command-handler";
 
@@ -22,12 +23,13 @@ export const vehCommand = (
 
 export const plateCommand = (player: Player, plate: string) => {
   if (!player.vehicle || player.vehicle.driver !== player) {
-    player.sendChatMessage("Você não está dirigindo um veículo!", "red");
+    sendChatMessage(player, "Você não está dirigindo um veículo!", "red");
     return;
   }
 
   player.vehicle.numberPlateText = plate;
-  player.sendChatMessage(
+  sendChatMessage(
+    player,
     `Você alterou a placa do veículo para '${plate}'.`,
     "green"
   );
@@ -35,7 +37,7 @@ export const plateCommand = (player: Player, plate: string) => {
 
 export const repairVehicleCommand = (player: Player) => {
   if (!player.vehicle) {
-    player.sendChatMessage("Você não está dentro de um veículo.", "red");
+    sendChatMessage(player, "Você não está dentro de um veículo.", "red");
     return;
   }
 

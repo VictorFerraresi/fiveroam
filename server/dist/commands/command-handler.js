@@ -1,4 +1,5 @@
 import { log } from "alt-server";
+import { sendChatMessage } from "../services/chat.service";
 const commands = [];
 export const addCommand = (command) => {
     if (commands.find((cmd) => cmd.command === command.command)) {
@@ -10,7 +11,7 @@ export const addCommand = (command) => {
 export const executeCommand = (player, command, args) => {
     const foundCommand = commands.find((cmd) => cmd.command === command);
     if (!foundCommand) {
-        player.sendChatMessage(`O comando que você digitou (${command}) não existe!`, "red", false, "x");
+        sendChatMessage(player, `O comando que você digitou (${command}) não existe!`, "red", false, "x");
         return;
     }
     const functionArgCount = foundCommand.callback.length - 1;
@@ -24,7 +25,7 @@ export const executeCommand = (player, command, args) => {
         }
     }
     if (args.length < functionArgCount) {
-        player.sendChatMessage(`USO: ${foundCommand.helpText}`, "grey");
+        sendChatMessage(player, `USO: ${foundCommand.helpText}`, "grey");
         return;
     }
     args = args.map((a) => {

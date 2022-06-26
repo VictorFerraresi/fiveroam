@@ -1,5 +1,6 @@
 import * as alt from "alt-server";
 import { Player } from "../entities/player.entity";
+import { sendChatMessage } from "../services/chat.service";
 import { getPlayerByUserAndPassword } from "../services/player.service";
 import { Command } from "./command";
 import { addCommand, getAllCommands } from "./command-handler";
@@ -12,7 +13,7 @@ export const helpCommand = (player: Player) => {
     commands += `/${cmd.command} `;
   });
 
-  player.sendChatMessage(commands, "grey");
+  sendChatMessage(player, commands, "grey");
 };
 
 export const loginCommand = async (
@@ -22,11 +23,20 @@ export const loginCommand = async (
 ) => {
   const res = await getPlayerByUserAndPassword(user, plainPassword);
 
-  if (!!res) {
-    player.sendChatMessage("Em tese, vc logou", "green");
+  if (!res) {
+    sendChatMessage(player, "Usuário ou senha incorretos!", "red");
+    return;
   }
 
-  player.sendChatMessage("Usuário ou senha incorretos!", "red");
+  player.uid = res.id;
+  player.user = res.username;
+  player.encryptedPassword = res.password;
+  player.admin = res.admin;
+  sendChatMessage(
+    player,
+    `Em tese, vc logou e o seu admin level é ${player.admin}`,
+    "green"
+  );
 };
 
 export const skinCommand = (player: Player, model: string) => {
