@@ -1,7 +1,9 @@
 import { sendChatMessageToAllPlayers } from "../helpers/chat.helpers";
 import { executeCommand } from "../commands/command-handler";
 import { Player } from "../entities/player.entity";
+import * as alt from "alt-server";
 
+// Callbacks
 export const onChatInput = (
   player: Player,
   isCommand: boolean,
@@ -19,3 +21,6 @@ export const onChatInput = (
     sendChatMessageToAllPlayers(`${player.name}: ${text}`);
   }
 };
+
+// Registros
+alt.onClient("chat:onInput", onChatInput);

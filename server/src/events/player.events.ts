@@ -14,6 +14,7 @@ const robberSpawn = new Vector3(
   20.7200927734375
 );
 
+// Callbacks
 export const onPlayerConnect = (player: Player) => {
   player.spawn(-476.00439453125, -1039.160400390625, 52.5652099609375);
   player.emit("player:CharSelection");
@@ -49,3 +50,7 @@ export const onSelectedCharacter = (player: Player, team: number) => {
 export const onSetPlayerPosition = (player: Player, pos: Vector3) => {
   player.teleport(pos);
 };
+
+// Registros
+alt.onClient("player:SetPosition", onSetPlayerPosition);
+alt.onClient("player:SelectedCharacter", onSelectedCharacter);
