@@ -3,8 +3,7 @@ import * as alt from "alt-server";
 const copSpawn = new Vector3(451.75384521484375, -979.8461303710938, 30.6783447265625);
 const robberSpawn = new Vector3(116.42637634277344, -1949.7098388671875, 20.7200927734375);
 export const onPlayerConnect = (player) => {
-    player.spawn(-476.00439453125, -1039.160400390625, 52.5652099609375);
-    player.emit("player:CharSelection");
+    player.emit("player:DisplayLogin");
 };
 export const onSelectedCharacter = (player, team) => {
     if (0 == team) {
@@ -33,3 +32,5 @@ export const onSelectedCharacter = (player, team) => {
 export const onSetPlayerPosition = (player, pos) => {
     player.teleport(pos);
 };
+alt.onClient("player:SetPosition", onSetPlayerPosition);
+alt.onClient("player:SelectedCharacter", onSelectedCharacter);

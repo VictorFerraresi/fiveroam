@@ -1,4 +1,4 @@
-import { setPlayerSpawned } from "../../helpers/Player.helpers";
+import { setPlayerSpawned } from "../../helpers/player.helpers";
 
 export const onPlayerSpawn = () => {
   setPlayerSpawned(true);

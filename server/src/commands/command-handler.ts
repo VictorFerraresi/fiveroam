@@ -1,6 +1,5 @@
 import { log } from "alt-server";
 import { Player } from "../entities/player.entity";
-import { sendChatMessage } from "../helpers/chat.helpers";
 import { Command } from "./command";
 
 const commands: Command[] = [];
@@ -24,8 +23,7 @@ export const executeCommand = (
 
   // Command not found
   if (!foundCommand) {
-    sendChatMessage(
-      player,
+    player.sendChatMessage(
       `O comando que você digitou (${command}) não existe!`,
       "red",
       false,
@@ -50,7 +48,7 @@ export const executeCommand = (
 
   // Args count mismatch
   if (args.length < functionArgCount) {
-    sendChatMessage(player, `USO: ${foundCommand.helpText}`, "grey");
+    player.sendChatMessage(`USO: ${foundCommand.helpText}`, "grey");
     return;
   }
 

@@ -1,5 +1,6 @@
-import { sendChatMessageToAllPlayers } from "../helpers/chat.helpers";
+import { sendChatMessageToAllPlayers } from "../services/chat.service";
 import { executeCommand } from "../commands/command-handler";
+import * as alt from "alt-server";
 export const onChatInput = (player, isCommand, text) => {
     text = text.trim();
     if (isCommand) {
@@ -14,3 +15,4 @@ export const onChatInput = (player, isCommand, text) => {
         sendChatMessageToAllPlayers(`${player.name}: ${text}`);
     }
 };
+alt.onClient("chat:onInput", onChatInput);

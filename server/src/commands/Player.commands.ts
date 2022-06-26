@@ -1,6 +1,6 @@
 import * as alt from "alt-server";
 import { Player } from "../entities/player.entity";
-import { sendChatMessage } from "../helpers/chat.helpers";
+import { getPlayerByUserAndPassword } from "../services/player.service";
 import { Command } from "./command";
 import { addCommand, getAllCommands } from "./command-handler";
 
@@ -12,7 +12,21 @@ export const helpCommand = (player: Player) => {
     commands += `/${cmd.command} `;
   });
 
-  sendChatMessage(player, commands, "grey");
+  player.sendChatMessage(commands, "grey");
+};
+
+export const loginCommand = async (
+  player: Player,
+  user: string,
+  plainPassword: string
+) => {
+  const res = await getPlayerByUserAndPassword(user, plainPassword);
+
+  if (!!res) {
+    player.sendChatMessage("Em tese, vc logou", "green");
+  }
+
+  player.sendChatMessage("Usuário ou senha incorretos!", "red");
 };
 
 export const skinCommand = (player: Player, model: string) => {
@@ -47,6 +61,7 @@ export const posCommand = (player: Player) => {
 
 // Registros
 addCommand(new Command("ajuda", "/ajuda", helpCommand));
+addCommand(new Command("login", "/login [usuário] [senha]", loginCommand));
 addCommand(new Command("skin", "/skin [modelo]", skinCommand));
 addCommand(new Command("ircoord", "/ircoord [x] [y] [z]", gotoCoordCommand));
 addCommand(new Command("reviver", "/reviver", reviveCommand));

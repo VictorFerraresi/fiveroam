@@ -1,4 +1,4 @@
-import { sendChatMessageToAllPlayers } from "../helpers/chat.helpers";
+import { sendChatMessageToAllPlayers } from "../services/chat.service";
 import { executeCommand } from "../commands/command-handler";
 import { Player } from "../entities/player.entity";
 import * as alt from "alt-server";

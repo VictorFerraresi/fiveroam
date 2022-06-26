@@ -1,6 +1,6 @@
 import * as native from "natives";
 import * as alt from "alt-client";
-import { requestModel } from "../../helpers/Player.helpers";
+import { requestModel } from "../../helpers/player.helpers";
 import { drawText } from "../../helpers/UI.helpers";
 
 let copSelectionCam: number | undefined;

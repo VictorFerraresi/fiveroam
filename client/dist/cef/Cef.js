@@ -1,6 +1,6 @@
 import * as alt from "alt-client";
 import * as game from "natives";
-import { isPlayerSpawned } from "../helpers/Player.helpers";
+import { isPlayerSpawned } from "../helpers/player.helpers";
 import { activateChat, isChatActive } from "./chat";
 let cursorStatus = false;
 let isHudToggleable = true;
