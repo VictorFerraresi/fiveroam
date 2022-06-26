@@ -14,6 +14,10 @@ export const executeCommand = (player, command, args) => {
         sendChatMessage(player, `O comando que você digitou (${command}) não existe!`, "red", false, "x");
         return;
     }
+    if (player.admin < foundCommand.adminLevel) {
+        sendChatMessage(player, `Você não tem permissão para utilizar este comando!`, "red", false, "x");
+        return;
+    }
     const functionArgCount = foundCommand.callback.length - 1;
     const sentArgCount = args.length;
     if (foundCommand.greedyArg) {

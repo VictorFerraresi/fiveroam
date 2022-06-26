@@ -5,8 +5,7 @@ const robberSpawn = new Vector3(116.42637634277344, -1949.7098388671875, 20.7200
 export const onPlayerConnect = (player) => {
     player.emit("player:DisplayLogin");
 };
-export const onPlayerDisconect = (player, reason) => {
-    console.log("Reason was " + reason);
+export const onPlayerDisconnect = (player, reason) => {
     player.save();
 };
 export const onSelectedCharacter = (player, team) => {

@@ -35,6 +35,17 @@ export const executeCommand = (
     return;
   }
 
+  if (player.admin < foundCommand.adminLevel) {
+    sendChatMessage(
+      player,
+      `Você não tem permissão para utilizar este comando!`,
+      "red",
+      false,
+      "x"
+    );
+    return;
+  }
+
   const functionArgCount = foundCommand.callback.length - 1;
   const sentArgCount = args.length;
 

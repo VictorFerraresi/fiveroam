@@ -1,6 +1,6 @@
 import * as alt from "alt-server";
-import { onPlayerConnect, onPlayerDisconect } from "./player.events";
+import { onPlayerConnect, onPlayerDisconnect } from "./player.events";
 alt.on("playerConnect", onPlayerConnect);
-alt.on("playerDisconnect", onPlayerDisconect);
+alt.on("playerDisconnect", onPlayerDisconnect);
 import "./player.events";
 import "./chat.events";
