@@ -9,4 +9,6 @@ export const weaponCommand = (player: Player, model: string, ammo: number) => {
 };
 
 // Registros
-addCommand(new Command("arma", "/arma [nome] [munição]", weaponCommand));
+addCommand(
+  new Command("arma", "/arma [nome] [munição]", weaponCommand, false, 1)
+);

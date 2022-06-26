@@ -45,6 +45,8 @@ export const repairVehicleCommand = (player: Player) => {
 };
 
 // Registros
-addCommand(new Command("veh", "/veh [modelo] [cor1] [cor2]", vehCommand));
-addCommand(new Command("placa", "/placa [texto]", plateCommand, true));
-addCommand(new Command("reparar", "/reparar", repairVehicleCommand));
+addCommand(
+  new Command("veh", "/veh [modelo] [cor1] [cor2]", vehCommand, false, 1)
+);
+addCommand(new Command("placa", "/placa [texto]", plateCommand, true, 1));
+addCommand(new Command("reparar", "/reparar", repairVehicleCommand, false, 1));
