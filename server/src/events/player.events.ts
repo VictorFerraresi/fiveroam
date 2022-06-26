@@ -16,9 +16,11 @@ const robberSpawn = new Vector3(
 
 // Callbacks
 export const onPlayerConnect = (player: Player) => {
-  // player.spawn(-476.00439453125, -1039.160400390625, 52.5652099609375);
-  // player.emit("player:CharSelection");
   player.emit("player:DisplayLogin");
+};
+
+export const onPlayerDisconnect = (player: Player, reason: string) => {
+  player.save();
 };
 
 export const onSelectedCharacter = (player: Player, team: number) => {

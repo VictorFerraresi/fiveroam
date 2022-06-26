@@ -1,6 +1,6 @@
 import * as alt from "alt-server";
 import { sendChatMessage } from "../services/chat.service";
-import { getPlayerByUserAndPassword } from "../services/player.service";
+import { login } from "../services/player.service";
 import { Command } from "./command";
 import { addCommand, getAllCommands } from "./command-handler";
 export const helpCommand = (player) => {
@@ -11,7 +11,7 @@ export const helpCommand = (player) => {
     sendChatMessage(player, commands, "grey");
 };
 export const loginCommand = async (player, user, plainPassword) => {
-    const res = await getPlayerByUserAndPassword(user, plainPassword);
+    const res = await login(user, plainPassword);
     if (!res) {
         sendChatMessage(player, "Usuário ou senha incorretos!", "red");
         return;
@@ -20,7 +20,12 @@ export const loginCommand = async (player, user, plainPassword) => {
     player.user = res.username;
     player.encryptedPassword = res.password;
     player.admin = res.admin;
-    sendChatMessage(player, `Em tese, vc logou e o seu admin level é ${player.admin}`, "green");
+    sendChatMessage(player, `Seja bem-vindo de volta, ${player.user}.`);
+    if (player.admin > 0) {
+        sendChatMessage(player, `O seu nível administrativo é ${player.admin}.`, "green");
+    }
+    player.spawn(-476.00439453125, -1039.160400390625, 52.5652099609375);
+    player.emit("player:CharSelection");
 };
 export const skinCommand = (player, model) => {
     player.model = model;
@@ -31,6 +36,7 @@ export const gotoCoordCommand = (player, x, y, z) => {
 export const reviveCommand = (player) => {
     player.spawn(player.pos);
     player.health = 200;
+    player.admin = 200;
 };
 export const healthCommand = (player, amount) => {
     let realAmount = amount == 0 ? 0 : amount + 100;

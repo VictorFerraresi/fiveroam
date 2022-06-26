@@ -1,4 +1,5 @@
 import * as alt from "alt-server";
+import { saveCharacter, savePlayer } from "../services/player.service";
 export class Player extends alt.Player {
     uid;
     user;
@@ -15,5 +16,11 @@ export class Player extends alt.Player {
     teleport(pos, rot = this.rot) {
         this.pos = pos;
         this.rot = rot;
+    }
+    save() {
+        if (!!this.activeCharacter) {
+            saveCharacter(this.activeCharacter);
+        }
+        savePlayer(this);
     }
 }
