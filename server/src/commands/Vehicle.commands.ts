@@ -1,9 +1,9 @@
 import { Vector3 } from "alt-server";
-import { Player } from "../entities/Player";
-import { Vehicle } from "../entities/Vehicle";
-import { sendChatMessage } from "../helpers/Chat.helpers";
-import { Command } from "./Command";
-import { addCommand } from "./CommandHandler";
+import { Player } from "../entities/player.entity";
+import { Vehicle } from "../entities/vehicle.entity";
+import { sendChatMessage } from "../helpers/chat.helpers";
+import { Command } from "./command";
+import { addCommand } from "./command-handler";
 
 // Callbacks
 export const vehCommand = (

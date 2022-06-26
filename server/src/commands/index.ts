@@ -1,3 +1,3 @@
-import "./Player.commands";
-import "./Vehicle.commands";
-import "./Weapon.commands";
+import "./player.commands";
+import "./vehicle.commands";
+import "./weapon.commands";

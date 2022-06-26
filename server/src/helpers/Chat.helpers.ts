@@ -1,5 +1,5 @@
 import * as alt from "alt-server";
-import { Player } from "../entities/Player";
+import { Player } from "../entities/player.entity";
 
 export const sendChatMessageToAllPlayers = (
   text: string,

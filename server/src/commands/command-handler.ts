@@ -1,7 +1,7 @@
 import { log } from "alt-server";
-import { Player } from "../entities/Player";
-import { sendChatMessage } from "../helpers/Chat.helpers";
-import { Command } from "./Command";
+import { Player } from "../entities/player.entity";
+import { sendChatMessage } from "../helpers/chat.helpers";
+import { Command } from "./command";
 
 const commands: Command[] = [];
 

@@ -1,9 +1,11 @@
 import * as alt from "alt-server";
-import { onChatInput } from "./events/chat/onChatInput";
-import { onPlayerConnect } from "./events/player/onPlayerConnect";
-import { onSetPlayerPosition } from "./events/player/onSetPlayerPosition";
-import { onSelectedCharacter } from "./events/player/onSelectedCharacter";
-import { Player } from "./entities/Player";
+import { onChatInput } from "./events/chat.events";
+import { Player } from "./entities/player.entity";
+import {
+  onPlayerConnect,
+  onSelectedCharacter,
+  onSetPlayerPosition,
+} from "./events/player.events";
 
 alt.log(`Server script has started.`);
 

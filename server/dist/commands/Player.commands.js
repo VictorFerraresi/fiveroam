@@ -1,7 +1,7 @@
 import * as alt from "alt-server";
-import { sendChatMessage } from "../helpers/Chat.helpers";
-import { Command } from "./Command";
-import { addCommand, getAllCommands } from "./CommandHandler";
+import { sendChatMessage } from "../helpers/chat.helpers";
+import { Command } from "./command";
+import { addCommand, getAllCommands } from "./command-handler";
 export const helpCommand = (player) => {
     let commands = "";
     getAllCommands().forEach((cmd) => {
@@ -21,8 +21,6 @@ export const reviveCommand = (player) => {
 };
 export const healthCommand = (player, amount) => {
     let realAmount = amount == 0 ? 0 : amount + 100;
-    player.logToConsole("Real amount is " + realAmount);
-    player.logToConsole("Max health is " + player.maxHealth);
     if (realAmount > player.maxHealth)
         realAmount = player.maxHealth;
     player.health = realAmount;

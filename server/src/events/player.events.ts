@@ -1,6 +1,6 @@
+import { Vector3 } from "alt-server";
+import { Player } from "../entities/player.entity";
 import * as alt from "alt-server";
-import { Vector3 } from "alt-shared";
-import { Player } from "../../entities/Player";
 
 const copSpawn = new Vector3(
   451.75384521484375,
@@ -14,8 +14,13 @@ const robberSpawn = new Vector3(
   20.7200927734375
 );
 
+export const onPlayerConnect = (player: Player) => {
+  player.spawn(-476.00439453125, -1039.160400390625, 52.5652099609375);
+  player.emit("player:CharSelection");
+};
+
 export const onSelectedCharacter = (player: Player, team: number) => {
-  player.team = team;
+  //player.team = team;
 
   if (0 == team) {
     player.spawn(copSpawn);
@@ -39,4 +44,8 @@ export const onSelectedCharacter = (player: Player, team: number) => {
     player.emit("player:Spawn");
     player.emit("player:FinishCharSelection");
   }, 500);
+};
+
+export const onSetPlayerPosition = (player: Player, pos: Vector3) => {
+  player.teleport(pos);
 };

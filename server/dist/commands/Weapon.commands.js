@@ -1,5 +1,5 @@
-import { Command } from "./Command";
-import { addCommand } from "./CommandHandler";
+import { Command } from "./command";
+import { addCommand } from "./command-handler";
 import * as alt from "alt-server";
 export const weaponCommand = (player, model, ammo) => {
     player.giveWeapon(alt.hash(model), ammo, true);

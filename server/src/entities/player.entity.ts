@@ -1,9 +1,14 @@
 import * as alt from "alt-server";
 import { Vector3 } from "alt-server";
+import { Character } from "./character.entity";
 
 export class Player extends alt.Player {
-  team: number;
-  money: number;
+  uid: number;
+  user: string;
+  encryptedPassword: string;
+  admin: number;
+  characters: Character[];
+  activeCharacter: Character;
 
   constructor() {
     super();
@@ -15,14 +20,6 @@ export class Player extends alt.Player {
 
   logToConsole(log: string) {
     this.emit("player:Log", log);
-  }
-
-  giveMoney(amount: number) {
-    this.money += amount;
-  }
-
-  takeMoney(amount: number) {
-    this.money -= amount;
   }
 
   teleport(pos: Vector3, rot: Vector3 = this.rot) {
